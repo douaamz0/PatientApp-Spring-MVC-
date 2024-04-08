@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Date;
 
 @SpringBootApplication
-public class PatientAppApplication implements CommandLineRunner {
+public class PatientAppApplication {
 
     @Autowired
     private PatientRepository patientRepository;
@@ -20,10 +20,10 @@ public class PatientAppApplication implements CommandLineRunner {
     }
 
 
-    @Override
-    public void run(String... args) throws Exception {
-        patientRepository.save(new Patient(null,"Douaa",new Date(),false,12));
-        patientRepository.save(new Patient(null,"Amina",new Date(),true,123));
-        patientRepository.save(new Patient(null,"Fatima",new Date(),false,10));
-    }
+    //@Override
+//    public void run(String... args) throws Exception {
+//        patientRepository.save(new Patient(null,"Douaa",new Date(),false,12));
+//        patientRepository.save(new Patient(null,"Amina",new Date(),true,123));
+//        patientRepository.save(new Patient(null,"Fatima",new Date(),false,10));
+//    }
 }

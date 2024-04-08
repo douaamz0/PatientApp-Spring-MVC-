@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout"
+      layout:decorate="template1">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +9,9 @@
     <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+<div layout:fragment="content1">
+
+
 <div class="card" >
     <div class="card-header">
         <h2>Liste des patients</h2>
@@ -36,9 +41,14 @@
                 <td th:text="${p.malade}"></td>
                 <td th:text="${p.score}"></td>
                 <td>
-                    <a onClick="javascript:return confirm('Etes vous sur de voiloir supprimer ce patient')"
+                    <a onClick="javascript:return confirm('Etes vous sur de vouloir supprimer ce patient')"
                        th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}" class="btn btn-danger">
                         <i class="bi bi-trash"></i></a>
+                </td>
+                <td>
+                    <a
+                       th:href="@{editPatient(id=${p.id},keyword=${keyword},page=${currentPage})}" class="btn btn-success">
+                        Edit </a>
                 </td>
 
             </tr>
@@ -49,13 +59,13 @@
             <li th:each="page,status:${pages}">
                 <a th:href="@{/index(page=${status.index},keyword=${keyword})}"
                    th:class="${currentPage==status.index?'btn btn-info ms-1':'btn btn-outline-info ms-1'}"
-                   th:text="${status.index}"></a>
+                   th:text="${status.index}+1"></a>
 
             </li>
         </ul>
     </div>
 </div>
 
-
+</div>
 </body>
 </html>
